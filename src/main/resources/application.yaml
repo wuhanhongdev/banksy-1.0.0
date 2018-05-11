@@ -1,0 +1,25 @@
+spring:
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.01:3306/banksy?characterEncoding=utf8&autoReConnect=true&useSSL=false
+    hikari:
+      connection-timeout: 10000 # 定义获取连接的超时时间。最小250ms,默认30s
+      idle-timeout: 50000 # 定义连接空闲时间。最小10s,默认10m
+      maximumPoolSize: 100 # 定义最大的连接数。默认10
+      connectionTestQuery: select 1 # 从连接池获取到连接后，进行检查的查询语句。推荐设置该属性。默认值为none
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.bootstrap.banksy.core.domain
+server:
+  port: 8999
+  servlet:
+    context-path: /banksy

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" packages="com.bootstrap.banksy">
+	<Appenders>
+		<Console name="CONSOLE" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss SSS} [Thread: %t][ Class:%c  Method: %l ]%n%p:%m%n" />
+		</Console>
+
+		<Async name="Async" includeLocation="true">
+			<AppenderRef ref="rewrite"/>
+		</Async>
+		<Rewrite name="rewrite">
+              <AppenderRef ref="logfile"/>
+              <AppenderRef ref="CONSOLE"/>
+        </Rewrite>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="org.apache.ibatis" level="info" />
+		<Logger name="com.ibatis" level="info" />
+		<Logger name="java.sql.Connection" level="info"/>
+		<Logger name="java.sql.Statement" level="info"/>
+		<Logger name="java.sql.PreparedStatement" level="info"/>
+		<Logger name="com.pingan" level="info"/>
+		<Logger name="org.springframework" level="error"/>
+		<Logger name="org.springframework.jdbc" level="info"/>
+		<Root level="info" includeLocation="true">
+			<AppenderRef ref="Async" />
+		</Root>
+	</Loggers>
+</Configuration>
