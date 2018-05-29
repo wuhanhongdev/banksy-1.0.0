@@ -1,7 +1,7 @@
 package com.bootstrap.banksy.core.advice;
 
 
-import com.bootstrap.banksy.base.Constants;
+import com.bootstrap.banksy.core.base.Constants;
 import com.bootstrap.banksy.core.annotation.Authentication;
 import com.bootstrap.banksy.core.domain.SysUser;
 import org.springframework.web.method.HandlerMethod;

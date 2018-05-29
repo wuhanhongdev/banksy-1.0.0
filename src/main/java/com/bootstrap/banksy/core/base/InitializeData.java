@@ -1,4 +1,4 @@
-package com.bootstrap.banksy.base;
+package com.bootstrap.banksy.core.base;
 
 import com.alibaba.fastjson.JSON;
 import com.bootstrap.banksy.core.domain.SysModule;

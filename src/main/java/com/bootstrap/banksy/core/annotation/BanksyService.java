@@ -4,12 +4,13 @@ import java.lang.annotation.*;
 
 /**
  * @author wuhanhong
- * @date 2018 - 04 - 30
+ * @date 2018 - 05 - 29
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
-public @interface Authentication {
-
+public @interface BanksyService {
+    String serviceNo();
+    String description();
 }

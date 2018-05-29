@@ -1,10 +1,8 @@
 package com.bootstrap.banksy.facade;
 
-import com.bootstrap.banksy.base.InitializeData;
-import com.bootstrap.banksy.core.annotation.Authentication;
-import com.bootstrap.banksy.core.domain.SessionInfo;
+import com.bootstrap.banksy.core.base.InitializeData;
+import com.bootstrap.banksy.core.base.Request;
 import com.bootstrap.banksy.core.domain.SysModule;
-import com.bootstrap.banksy.core.domain.SysUser;
 import com.bootstrap.banksy.core.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,16 +44,28 @@ public class DefaultController {
             } else {
                 modelAndView = new ModelAndView(module.getLocation());
                 //加载登陆人的页面权限
-                /*SessionInfo session = sessionService.getLoginInfo(request);
+                /*
+                SessionInfo session = sessionService.getLoginInfo(request);
                 if (session == null) {
                     response.sendRedirect("");
                 }
 
-                session.getPageButton(sourceId);*/
+                session.getPageButton(sourceId);
+                */
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return modelAndView;
+    }
+
+    /**
+     * 公共服务类
+     * @param request
+     * @param <T>
+     * @return
+     */
+    public <T extends Request> Object baseService(T request) {
+        return null;
     }
 }

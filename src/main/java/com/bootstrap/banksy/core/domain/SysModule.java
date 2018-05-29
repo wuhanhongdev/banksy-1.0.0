@@ -1,6 +1,6 @@
 package com.bootstrap.banksy.core.domain;
 
-import com.bootstrap.banksy.base.BaseModel;
+import com.bootstrap.banksy.core.base.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
 

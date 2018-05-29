@@ -1,9 +1,14 @@
-package com.bootstrap.banksy.base;
+package com.bootstrap.banksy.core.base;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class PageResponse implements Serializable {
 
     private Long total;
@@ -26,29 +31,5 @@ public class PageResponse implements Serializable {
         model.setRes(new ArrayList<>());
 
         return model;
-    }
-
-    public Long getTotal() {
-        return total;
-    }
-
-    public void setTotal(Long total) {
-        this.total = total;
-    }
-
-    public boolean isSue() {
-        return sue;
-    }
-
-    public void setSue(boolean sue) {
-        this.sue = sue;
-    }
-
-    public List getRes() {
-        return res;
-    }
-
-    public void setRes(List res) {
-        this.res = res;
     }
 }

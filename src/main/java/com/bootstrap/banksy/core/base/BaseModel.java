@@ -1,4 +1,4 @@
-package com.bootstrap.banksy.base;
+package com.bootstrap.banksy.core.base;
 
 import lombok.Getter;
 import lombok.Setter;

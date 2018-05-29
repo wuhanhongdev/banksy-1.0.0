@@ -1,4 +1,4 @@
-package com.bootstrap.banksy.base;
+package com.bootstrap.banksy.core.base;
 
 public class Constants {
     public final static String SESSION = "userLoginInfo";

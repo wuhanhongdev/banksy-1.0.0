@@ -1,6 +1,6 @@
 package com.bootstrap.banksy.core.service;
 
-import com.bootstrap.banksy.base.Constants;
+import com.bootstrap.banksy.core.base.Constants;
 import com.bootstrap.banksy.core.domain.SessionInfo;
 import org.springframework.stereotype.Service;
 

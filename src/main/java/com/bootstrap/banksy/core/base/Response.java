@@ -1,7 +1,13 @@
-package com.bootstrap.banksy.base;
+package com.bootstrap.banksy.core.base;
+
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
+@Getter
+@Setter
 public class Response implements Serializable {
 
     public static final Integer SUCCESS = 1;
@@ -24,29 +30,5 @@ public class Response implements Serializable {
         response.setCode(FAIL);
         response.setMessage(msg);
         return response;
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
     }
 }

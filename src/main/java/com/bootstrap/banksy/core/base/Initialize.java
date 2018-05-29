@@ -1,4 +1,4 @@
-package com.bootstrap.banksy.base;
+package com.bootstrap.banksy.core.base;
 
 import com.bootstrap.banksy.core.domain.SysModule;
 import com.bootstrap.banksy.core.service.ModuleService;
@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 系统初始化
