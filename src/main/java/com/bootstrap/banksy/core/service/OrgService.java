@@ -16,6 +16,6 @@ public class OrgService {
 
     public int save(SysOrg org) {
         logger.info("保存机构/部门信息:{}", JSON.toJSONString(org));
-        return orgMapper.insert(org);
+        return orgMapper.insertSelective(org);
     }
 }

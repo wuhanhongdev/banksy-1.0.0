@@ -32,7 +32,7 @@ public class DefaultController {
      * @param sourceId
      * @return
      */
-    @Authentication
+    //@Authentication
     @RequestMapping("/jump")
     public ModelAndView source(
             HttpServletRequest request, HttpServletResponse response,
@@ -42,16 +42,16 @@ public class DefaultController {
             SysModule module = InitializeData.loadModule(sourceId);
 
             if (module == null) {
-                modelAndView = new ModelAndView("404");
+                modelAndView = new ModelAndView("error/404");
             } else {
-                modelAndView = new ModelAndView(module.getPageName());
+                modelAndView = new ModelAndView(module.getLocation());
                 //加载登陆人的页面权限
-                SessionInfo session = sessionService.getLoginInfo(request);
+                /*SessionInfo session = sessionService.getLoginInfo(request);
                 if (session == null) {
                     response.sendRedirect("");
                 }
 
-                session.getPageButton(sourceId);
+                session.getPageButton(sourceId);*/
             }
         } catch (Exception e) {
             e.printStackTrace();

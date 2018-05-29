@@ -1,184 +1,123 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.bootstrap.banksy.core.mapper.SysUserMapper" >
-  <resultMap id="BaseResultMap" type="com.bootstrap.banksy.core.domain.SysUser" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="loginname" property="loginname" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="builtin" property="builtin" jdbcType="BIT" />
-    <result column="validity" property="validity" jdbcType="BIT" />
-    <result column="creator_userid" property="creatorUserid" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_userid" property="updateUserid" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.bootstrap.banksy.core.domain.SysUser" extends="BaseResultMap" >
-    <result column="description" property="description" jdbcType="LONGVARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, name, loginname, password, builtin, validity, creator_userid, create_time, update_userid, 
-    update_time
-  </sql>
-  <sql id="Blob_Column_List" >
-    description
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from sys_user
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from sys_user
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.bootstrap.banksy.core.domain.SysUser" >
-    insert into sys_user (id, name, loginname, 
-      password, builtin, validity, 
-      creator_userid, create_time, update_userid, 
-      update_time, description)
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{loginname,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{builtin,jdbcType=BIT}, #{validity,jdbcType=BIT}, 
-      #{creatorUserid,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateUserid,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{description,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.bootstrap.banksy.core.domain.SysUser" >
-    insert into sys_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="name != null" >
+<mapper namespace="com.bootstrap.banksy.core.mapper.SysUserMapper">
+
+    <resultMap id="AllColumnMap" type="com.bootstrap.banksy.core.domain.SysUser">
+        <result column="name" property="name"/>
+        <result column="loginname" property="loginname"/>
+        <result column="password" property="password"/>
+        <result column="description" property="description"/>
+        <result column="id" property="id"/>
+        <result column="creator_userid" property="creatorUserid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_userid" property="updateUserid"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="version" property="version"/>
+        <result column="is_del" property="isDel"/>
+    </resultMap>
+
+    <sql id="all_column">
         name,
-      </if>
-      <if test="loginname != null" >
         loginname,
-      </if>
-      <if test="password != null" >
         password,
-      </if>
-      <if test="builtin != null" >
-        builtin,
-      </if>
-      <if test="validity != null" >
-        validity,
-      </if>
-      <if test="creatorUserid != null" >
-        creator_userid,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateUserid != null" >
-        update_userid,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-      <if test="description != null" >
         description,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="loginname != null" >
-        #{loginname,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="builtin != null" >
-        #{builtin,jdbcType=BIT},
-      </if>
-      <if test="validity != null" >
-        #{validity,jdbcType=BIT},
-      </if>
-      <if test="creatorUserid != null" >
-        #{creatorUserid,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateUserid != null" >
-        #{updateUserid,jdbcType=VARCHAR},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="description != null" >
-        #{description,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bootstrap.banksy.core.domain.SysUser" >
-    update sys_user
-    <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="loginname != null" >
-        loginname = #{loginname,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="builtin != null" >
-        builtin = #{builtin,jdbcType=BIT},
-      </if>
-      <if test="validity != null" >
-        validity = #{validity,jdbcType=BIT},
-      </if>
-      <if test="creatorUserid != null" >
-        creator_userid = #{creatorUserid,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateUserid != null" >
-        update_userid = #{updateUserid,jdbcType=VARCHAR},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="description != null" >
-        description = #{description,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bootstrap.banksy.core.domain.SysUser" >
-    update sys_user
-    set name = #{name,jdbcType=VARCHAR},
-      loginname = #{loginname,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      builtin = #{builtin,jdbcType=BIT},
-      validity = #{validity,jdbcType=BIT},
-      creator_userid = #{creatorUserid,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_userid = #{updateUserid,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      description = #{description,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.bootstrap.banksy.core.domain.SysUser" >
-    update sys_user
-    set name = #{name,jdbcType=VARCHAR},
-      loginname = #{loginname,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      builtin = #{builtin,jdbcType=BIT},
-      validity = #{validity,jdbcType=BIT},
-      creator_userid = #{creatorUserid,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_userid = #{updateUserid,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
+        id,
+        creator_userid,
+        create_time,
+        update_userid,
+        update_time,
+        version,
+        is_del
+    </sql>
+
+    <insert id="insertSelective">
+        INSERT INTO sys_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null"> name, </if>
+            <if test="loginname != null"> loginname, </if>
+            <if test="password != null"> password, </if>
+            <if test="description != null"> description, </if>
+            <if test="id != null"> id, </if>
+            <if test="creatorUserid != null"> creator_userid, </if>
+            <if test="createTime != null"> create_time, </if>
+            <if test="updateUserid != null"> update_userid, </if>
+            <if test="updateTime != null"> update_time, </if>
+            <if test="version != null"> version, </if>
+            <if test="isDel != null"> is_del, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null"> #{name}, </if>
+            <if test="loginname != null"> #{loginname}, </if>
+            <if test="password != null"> #{password}, </if>
+            <if test="description != null"> #{description}, </if>
+            <if test="id != null"> #{id}, </if>
+            <if test="creatorUserid != null"> #{creatorUserid}, </if>
+            <if test="createTime != null"> #{createTime}, </if>
+            <if test="updateUserid != null"> #{updateUserid}, </if>
+            <if test="updateTime != null"> #{updateTime}, </if>
+            <if test="version != null"> #{version}, </if>
+            <if test="isDel != null"> #{isDel}, </if>
+        </trim>
+    </insert>
+
+    <insert id="insertList">
+        INSERT INTO sys_user(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="users" item="user" index="index" separator=",">
+            (
+            #{user.name},
+            #{user.loginname},
+            #{user.password},
+            #{user.description},
+            #{user.id},
+            #{user.creatorUserid},
+            #{user.createTime},
+            #{user.updateUserid},
+            #{user.updateTime},
+            #{user.version},
+            #{user.isDel}
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateSelective">
+        UPDATE sys_user
+        <set>
+            <if test="name != null"> name = #{name}, </if>
+            <if test="loginname != null"> loginname = #{loginname}, </if>
+            <if test="password != null"> password = #{password}, </if>
+            <if test="description != null"> description = #{description}, </if>
+            <if test="id != null"> id = #{id}, </if>
+            <if test="creatorUserid != null"> creator_userid = #{creatorUserid}, </if>
+            <if test="createTime != null"> create_time = #{createTime}, </if>
+            <if test="updateUserid != null"> update_userid = #{updateUserid}, </if>
+            <if test="version != null"> version = #{version}, </if>
+            <if test="isDel != null"> is_del = #{isDel}, </if>
+        </set>
+         WHERE id = #{id}
+    </update>
+
+    <select id="selectAll" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM sys_user
+        <where>
+            <if test="name != null"> AND name = #{name} </if>
+            <if test="loginname != null"> AND loginname = #{loginname} </if>
+            <if test="password != null"> AND password = #{password} </if>
+            <if test="description != null"> AND description = #{description} </if>
+            <if test="id != null"> AND id = #{id} </if>
+            <if test="creatorUserid != null"> AND creator_userid = #{creatorUserid} </if>
+            <if test="createTime != null"> AND create_time = #{createTime} </if>
+            <if test="updateUserid != null"> AND update_userid = #{updateUserid} </if>
+            <if test="updateTime != null"> AND update_time = #{updateTime} </if>
+            <if test="version != null"> AND version = #{version} </if>
+            <if test="isDel != null"> AND is_del = #{isDel} </if>
+        </where>
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM sys_user where id = #{id}
+    </delete>
 </mapper>

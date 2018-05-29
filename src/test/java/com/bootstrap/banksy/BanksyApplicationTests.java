@@ -89,7 +89,7 @@ public class BanksyApplicationTests {
     public void testSaveMenu(){
         String[] buttons = new String[]{"添加","修改","删除"};
         String[] subMenus = new String[]{"机构管理","菜单管理","人员管理","角色管理","字典设置"};
-        String[] subMenusName = new String[]{"/system/orgList","/system/menuList","/system/userList","/system/roleList","/system/dictList"};
+        String[] subMenusName = new String[]{"/settings/orgList","/settings/menuList","/settings/userList","/settings/roleList","/settings/dictList"};
         SysModule sysModule = new SysModule();
         sysModule.setId(idWorker.uuid());
         sysModule.setParentId("-1");

@@ -1,20 +1,18 @@
 package com.bootstrap.banksy.core.mapper;
 
+import java.util.List;
+
 import com.bootstrap.banksy.core.domain.SysRole;
 
 public interface SysRoleMapper {
 
-    int deleteByPrimaryKey(String id);
+    int insertSelective(SysRole role);
 
-    int insert(SysRole record);
+    int insertList(List<SysRole> roles);
 
-    int insertSelective(SysRole record);
+    List<SysRole> selectAll(SysRole role);
 
-    SysRole selectByPrimaryKey(String id);
+    int updateSelective(SysRole role);
 
-    int updateByPrimaryKeySelective(SysRole record);
-
-    int updateByPrimaryKeyWithBLOBs(SysRole record);
-
-    int updateByPrimaryKey(SysRole record);
+    int deleteById(String id);
 }

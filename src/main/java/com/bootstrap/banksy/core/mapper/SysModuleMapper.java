@@ -1,24 +1,20 @@
 package com.bootstrap.banksy.core.mapper;
 
-import com.bootstrap.banksy.core.domain.SysModule;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import java.util.Map;
+
+import com.bootstrap.banksy.core.domain.SysModule;
 
 public interface SysModuleMapper {
-    int deleteByPrimaryKey(String id);
 
-    int insert(SysModule record);
+    int insertSelective(SysModule module);
 
-    int insertSelective(SysModule record);
+    int insertList(List<SysModule> modules);
 
-    SysModule selectByPrimaryKey(String id);
+    List<SysModule> selectAll(SysModule module);
 
-    int updateByPrimaryKeySelective(SysModule record);
+    int updateSelective(SysModule module);
 
-    int updateByPrimaryKeyWithBLOBs(SysModule record);
-
-    int updateByPrimaryKey(SysModule record);
-
-    List<SysModule> selectByMap(Map<String, Object> params);
+    int deleteById(String id);
 }

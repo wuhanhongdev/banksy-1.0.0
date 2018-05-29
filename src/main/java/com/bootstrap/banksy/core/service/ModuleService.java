@@ -23,13 +23,13 @@ public class ModuleService {
      * @param params
      * @return
      */
-    public List<SysModule> selectModules(Map<String, Object> params) {
-        return moduleMapper.selectByMap(params);
+    public List<SysModule> selectModules(SysModule params) {
+        return moduleMapper.selectAll(params);
     }
 
     public int save(SysModule button) {
         logger.info("保存资源信息:{}", JSON.toJSONString(button));
 
-        return moduleMapper.insert(button);
+        return moduleMapper.insertSelective(button);
     }
 }

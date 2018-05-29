@@ -28,10 +28,10 @@ public class Initialize {
     public void initModules() {
         try {
             logger.info("-----------------------------开始初始化资源信息");
-            Map<String, Object> params = new HashMap<>();
             //仅缓存页面菜单一级
-            params.put("level",Constants.MenuType.LEVEL_SUB_MENU);
-            List<SysModule> modules = moduleService.selectModules(params);
+            SysModule queryModule = new SysModule();
+            queryModule.setLevel(Constants.MenuType.LEVEL_SUB_MENU);
+            List<SysModule> modules = moduleService.selectModules(queryModule);
             logger.info("-----------------------------查询到资源共{}个", modules.size());
             for (SysModule module : modules) {
                 InitializeData.addModule(module);

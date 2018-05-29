@@ -1,244 +1,152 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.bootstrap.banksy.core.mapper.SysModuleMapper" >
-  <resultMap id="BaseResultMap" type="com.bootstrap.banksy.core.domain.SysModule" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
-    <result column="level" property="level" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="page_name" property="pageName" jdbcType="VARCHAR" />
-    <result column="datatable" property="datatable" jdbcType="VARCHAR" />
-    <result column="register_time" property="registerTime" jdbcType="TIMESTAMP" />
-    <result column="creator_userid" property="creatorUserid" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_userid" property="updateUserid" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="is_del" property="isDel" jdbcType="INTEGER" />
-    <result column="version" property="version" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.bootstrap.banksy.core.domain.SysModule" extends="BaseResultMap" >
-    <result column="location" property="location" jdbcType="LONGVARCHAR" />
-    <result column="description" property="description" jdbcType="LONGVARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, parent_id, level, name, page_name, datatable, register_time, creator_userid, 
-    create_time, update_userid, update_time, is_del, version
-  </sql>
-  <sql id="Blob_Column_List" >
-    location, description
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from sys_module
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from sys_module
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.bootstrap.banksy.core.domain.SysModule" >
-    insert into sys_module (id, parent_id, level, 
-      name, page_name, datatable, 
-      register_time, creator_userid, create_time, 
-      update_userid, update_time, is_del, 
-      version, location, description
-      )
-    values (#{id,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
-      #{name,jdbcType=VARCHAR}, #{pageName,jdbcType=VARCHAR}, #{datatable,jdbcType=VARCHAR}, 
-      #{registerTime,jdbcType=TIMESTAMP}, #{creatorUserid,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateUserid,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{isDel,jdbcType=INTEGER}, 
-      #{version,jdbcType=VARCHAR}, #{location,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.bootstrap.banksy.core.domain.SysModule" >
-    insert into sys_module
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="parentId != null" >
-        parent_id,
-      </if>
-      <if test="level != null" >
-        level,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="pageName != null" >
-        page_name,
-      </if>
-      <if test="datatable != null" >
-        datatable,
-      </if>
-      <if test="registerTime != null" >
-        register_time,
-      </if>
-      <if test="creatorUserid != null" >
-        creator_userid,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateUserid != null" >
-        update_userid,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-      <if test="isDel != null" >
-        is_del,
-      </if>
-      <if test="version != null" >
-        version,
-      </if>
-      <if test="location != null" >
-        location,
-      </if>
-      <if test="description != null" >
-        description,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="parentId != null" >
-        #{parentId,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null" >
-        #{level,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="pageName != null" >
-        #{pageName,jdbcType=VARCHAR},
-      </if>
-      <if test="datatable != null" >
-        #{datatable,jdbcType=VARCHAR},
-      </if>
-      <if test="registerTime != null" >
-        #{registerTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="creatorUserid != null" >
-        #{creatorUserid,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateUserid != null" >
-        #{updateUserid,jdbcType=VARCHAR},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDel != null" >
-        #{isDel,jdbcType=INTEGER},
-      </if>
-      <if test="version != null" >
-        #{version,jdbcType=VARCHAR},
-      </if>
-      <if test="location != null" >
-        #{location,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="description != null" >
-        #{description,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bootstrap.banksy.core.domain.SysModule" >
-    update sys_module
-    <set >
-      <if test="parentId != null" >
-        parent_id = #{parentId,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null" >
-        level = #{level,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="pageName != null" >
-        page_name = #{pageName,jdbcType=VARCHAR},
-      </if>
-      <if test="datatable != null" >
-        datatable = #{datatable,jdbcType=VARCHAR},
-      </if>
-      <if test="registerTime != null" >
-        register_time = #{registerTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="creatorUserid != null" >
-        creator_userid = #{creatorUserid,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateUserid != null" >
-        update_userid = #{updateUserid,jdbcType=VARCHAR},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDel != null" >
-        is_del = #{isDel,jdbcType=INTEGER},
-      </if>
-      <if test="version != null" >
-        version = #{version,jdbcType=VARCHAR},
-      </if>
-      <if test="location != null" >
-        location = #{location,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="description != null" >
-        description = #{description,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bootstrap.banksy.core.domain.SysModule" >
-    update sys_module
-    set parent_id = #{parentId,jdbcType=VARCHAR},
-      level = #{level,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
-      page_name = #{pageName,jdbcType=VARCHAR},
-      datatable = #{datatable,jdbcType=VARCHAR},
-      register_time = #{registerTime,jdbcType=TIMESTAMP},
-      creator_userid = #{creatorUserid,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_userid = #{updateUserid,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      is_del = #{isDel,jdbcType=INTEGER},
-      version = #{version,jdbcType=VARCHAR},
-      location = #{location,jdbcType=LONGVARCHAR},
-      description = #{description,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.bootstrap.banksy.core.domain.SysModule" >
-    update sys_module
-    set parent_id = #{parentId,jdbcType=VARCHAR},
-      level = #{level,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
-      page_name = #{pageName,jdbcType=VARCHAR},
-      datatable = #{datatable,jdbcType=VARCHAR},
-      register_time = #{registerTime,jdbcType=TIMESTAMP},
-      creator_userid = #{creatorUserid,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_userid = #{updateUserid,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      is_del = #{isDel,jdbcType=INTEGER},
-      version = #{version,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
+<mapper namespace="com.bootstrap.banksy.core.mapper.SysModuleMapper">
 
-  <select id="selectByMap" parameterType="map" resultMap="ResultMapWithBLOBs">
-    SELECT
-    <include refid="Blob_Column_List"/>
-    from sys_module WHERE is_del = 1
-    <if test="level != null and level != ''">
-      and level = #{level}
-    </if>
-  </select>
+    <resultMap id="AllColumnMap" type="com.bootstrap.banksy.core.domain.SysModule">
+        <result column="parent_id" property="parentId"/>
+        <result column="level" property="level"/>
+        <result column="name" property="name"/>
+        <result column="page_name" property="pageName"/>
+        <result column="datatable" property="datatable"/>
+        <result column="register_time" property="registerTime"/>
+        <result column="location" property="location"/>
+        <result column="description" property="description"/>
+        <result column="id" property="id"/>
+        <result column="creator_userid" property="creatorUserid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_userid" property="updateUserid"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="version" property="version"/>
+        <result column="is_del" property="isDel"/>
+    </resultMap>
+
+    <sql id="all_column">
+        parent_id,
+        level,
+        name,
+        page_name,
+        datatable,
+        register_time,
+        location,
+        description,
+        id,
+        creator_userid,
+        create_time,
+        update_userid,
+        update_time,
+        version,
+        is_del
+    </sql>
+
+    <insert id="insertSelective">
+        INSERT INTO T_SYS_MODULE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentId != null"> parent_id, </if>
+            <if test="level != null"> level, </if>
+            <if test="name != null"> name, </if>
+            <if test="pageName != null"> page_name, </if>
+            <if test="datatable != null"> datatable, </if>
+            <if test="registerTime != null"> register_time, </if>
+            <if test="location != null"> location, </if>
+            <if test="description != null"> description, </if>
+            <if test="id != null"> id, </if>
+            <if test="creatorUserid != null"> creator_userid, </if>
+            <if test="createTime != null"> create_time, </if>
+            <if test="updateUserid != null"> update_userid, </if>
+            <if test="updateTime != null"> update_time, </if>
+            <if test="version != null"> version, </if>
+            <if test="isDel != null"> is_del, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentId != null"> #{parentId}, </if>
+            <if test="level != null"> #{level}, </if>
+            <if test="name != null"> #{name}, </if>
+            <if test="pageName != null"> #{pageName}, </if>
+            <if test="datatable != null"> #{datatable}, </if>
+            <if test="registerTime != null"> #{registerTime}, </if>
+            <if test="location != null"> #{location}, </if>
+            <if test="description != null"> #{description}, </if>
+            <if test="id != null"> #{id}, </if>
+            <if test="creatorUserid != null"> #{creatorUserid}, </if>
+            <if test="createTime != null"> #{createTime}, </if>
+            <if test="updateUserid != null"> #{updateUserid}, </if>
+            <if test="updateTime != null"> #{updateTime}, </if>
+            <if test="version != null"> #{version}, </if>
+            <if test="isDel != null"> #{isDel}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO T_SYS_MODULE(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="modules" item="module" index="index" separator=",">
+            (
+            #{module.parentId},
+            #{module.level},
+            #{module.name},
+            #{module.pageName},
+            #{module.datatable},
+            #{module.registerTime},
+            #{module.location},
+            #{module.description},
+            #{module.id},
+            #{module.creatorUserid},
+            #{module.createTime},
+            #{module.updateUserid},
+            #{module.updateTime},
+            #{module.version},
+            #{module.isDel}
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateSelective">
+        UPDATE T_SYS_MODULE
+        <set>
+            <if test="parentId != null"> parent_id = #{parentId}, </if>
+            <if test="level != null"> level = #{level}, </if>
+            <if test="name != null"> name = #{name}, </if>
+            <if test="pageName != null"> page_name = #{pageName}, </if>
+            <if test="datatable != null"> datatable = #{datatable}, </if>
+            <if test="registerTime != null"> register_time = #{registerTime}, </if>
+            <if test="location != null"> location = #{location}, </if>
+            <if test="description != null"> description = #{description}, </if>
+            <if test="id != null"> id = #{id}, </if>
+            <if test="creatorUserid != null"> creator_userid = #{creatorUserid}, </if>
+            <if test="createTime != null"> create_time = #{createTime}, </if>
+            <if test="updateUserid != null"> update_userid = #{updateUserid}, </if>
+            <if test="version != null"> version = #{version}, </if>
+            <if test="isDel != null"> is_del = #{isDel}, </if>
+        </set>
+         WHERE id = #{id}
+    </update>
+
+    <select id="selectAll" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM T_SYS_MODULE
+        <where>
+            <if test="parentId != null"> AND parent_id = #{parentId} </if>
+            <if test="level != null"> AND level = #{level} </if>
+            <if test="name != null"> AND name = #{name} </if>
+            <if test="pageName != null"> AND page_name = #{pageName} </if>
+            <if test="datatable != null"> AND datatable = #{datatable} </if>
+            <if test="registerTime != null"> AND register_time = #{registerTime} </if>
+            <if test="location != null"> AND location = #{location} </if>
+            <if test="description != null"> AND description = #{description} </if>
+            <if test="id != null"> AND id = #{id} </if>
+            <if test="creatorUserid != null"> AND creator_userid = #{creatorUserid} </if>
+            <if test="createTime != null"> AND create_time = #{createTime} </if>
+            <if test="updateUserid != null"> AND update_userid = #{updateUserid} </if>
+            <if test="updateTime != null"> AND update_time = #{updateTime} </if>
+            <if test="version != null"> AND version = #{version} </if>
+            <if test="isDel != null"> AND is_del = #{isDel} </if>
+        </where>
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM T_SYS_MODULE where id = #{id}
+    </delete>
 </mapper>

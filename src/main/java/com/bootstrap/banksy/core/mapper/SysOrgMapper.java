@@ -1,18 +1,19 @@
 package com.bootstrap.banksy.core.mapper;
 
+
+import java.util.List;
+
 import com.bootstrap.banksy.core.domain.SysOrg;
 
 public interface SysOrgMapper {
 
-    int deleteByPrimaryKey(String id);
+    int insertSelective(SysOrg org);
 
-    int insert(SysOrg record);
+    int insertList(List<SysOrg> orgs);
 
-    int insertSelective(SysOrg record);
+    List<SysOrg> selectAll(SysOrg org);
 
-    SysOrg selectByPrimaryKey(String id);
+    int updateSelective(SysOrg org);
 
-    int updateByPrimaryKeySelective(SysOrg record);
-
-    int updateByPrimaryKey(SysOrg record);
+    int deleteById(String id);
 }

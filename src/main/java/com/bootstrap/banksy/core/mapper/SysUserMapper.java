@@ -1,20 +1,17 @@
 package com.bootstrap.banksy.core.mapper;
 
+import java.util.List;
 import com.bootstrap.banksy.core.domain.SysUser;
 
 public interface SysUserMapper {
 
-    int deleteByPrimaryKey(String id);
+    int insertSelective( SysUser user);
 
-    int insert(SysUser record);
+    int insertList(List< SysUser> users);
 
-    int insertSelective(SysUser record);
+    List<SysUser> selectAll( SysUser user);
 
-    SysUser selectByPrimaryKey(String id);
+    int updateSelective( SysUser user);
 
-    int updateByPrimaryKeySelective(SysUser record);
-
-    int updateByPrimaryKeyWithBLOBs(SysUser record);
-
-    int updateByPrimaryKey(SysUser record);
+    int deleteById(String id);
 }

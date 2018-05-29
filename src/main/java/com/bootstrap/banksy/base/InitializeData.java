@@ -1,5 +1,6 @@
 package com.bootstrap.banksy.base;
 
+import com.alibaba.fastjson.JSON;
 import com.bootstrap.banksy.core.domain.SysModule;
 
 import java.util.List;
@@ -7,7 +8,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class InitializeData {
-    //资源存放
+    /**
+     * 资源存放
+     */
     private final static ConcurrentHashMap<String,SysModule> moduleMap = new ConcurrentHashMap<>();
     private final static ConcurrentHashMap<String,List<Map<String,List<SysModule>>>> userAuthMap = new ConcurrentHashMap<>();
 
@@ -25,6 +28,7 @@ public class InitializeData {
      * @return
      */
     public static SysModule loadModule(String moduleId){
+        System.out.println(JSON.toJSONString(moduleMap));
         return moduleMap.get(moduleId);
     }
 
