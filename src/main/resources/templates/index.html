@@ -12,7 +12,7 @@
 
     <!--Morris Chart CSS -->
     <link rel="stylesheet" href="plugins/morris/morris.css">
-
+    <link href="plugins/bootstrap-table/css/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
@@ -25,12 +25,12 @@
 <body class="fixed-left">
 <div id="wrapper">
     <div class="topbar">
-        <div class="topbar-left">
+        <div class="topbar-left" style="background-color: #0077ef;">
             <div class="text-center">
                 <a href="javascript:void(0)" class="logo"><i class="icon-magnet icon-c-logo"></i><span>Ub<i class="fas fa-list"></i>ld</span></a>
             </div>
         </div>
-        <nav class="navbar-custom">
+        <nav class="navbar-custom" style="background-color: #0077ef;">
             <ul class="list-inline float-right mb-0">
                 <li class="list-inline-item dropdown notification-list">
                     <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
@@ -58,10 +58,9 @@
     <div class="left side-menu">
         <div class="sidebar-inner slimscrollleft">
             <!--- Divider -->
-            <div id="sidebar-menu">
+            <div id="sidebar-menu" style="padding-top: 5px;">
                 <ul>
-
-                    <li class="text-muted menu-title">Navigation</li>
+                    <li class="text-muted menu-title">功能列表</li>
 
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect"><i class="ti-home"></i> <span> 系统设置 </span> <span class="menu-arrow"></span></a>
@@ -104,6 +103,10 @@
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/jquery.nicescroll.js"></script>
     <script src="assets/js/jquery.scrollTo.min.js"></script>
+
+    <script src="plugins/bootstrap-table/js/bootstrap-table.js"></script>
+
+    <script src="assets/pages/jquery.bs-table.js"></script>
 
     <script src="plugins/peity/jquery.peity.min.js"></script>
     <script src="plugins/waypoints/lib/jquery.waypoints.min.js"></script>

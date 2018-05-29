@@ -22,7 +22,13 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   type-aliases-package: com.bootstrap.banksy.core.domain
 server:
-  port: 8999
+  port: 8888
   servlet:
     context-path: /banksy
+pagehelper:
+  auto-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+logging:
+  level: debug
 
