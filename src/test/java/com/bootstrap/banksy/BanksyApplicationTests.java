@@ -1,6 +1,6 @@
 package com.bootstrap.banksy;
 
-import com.bootstrap.banksy.base.Constants;
+import com.bootstrap.banksy.core.base.Constants;
 import com.bootstrap.banksy.core.domain.SysModule;
 import com.bootstrap.banksy.core.domain.SysOrg;
 import com.bootstrap.banksy.core.service.ModuleService;

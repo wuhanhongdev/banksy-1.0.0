@@ -32,10 +32,19 @@ ext {
 
 configurations {
     all*.exclude module : 'spring-boot-starter-logging'
+    all*.exclude module : 'spring-security-core'
+    all*.exclude module : 'spring-security-crypto'
+    all*.exclude module : 'spring-security-web'
+    all*.exclude module : 'spring-security-config'
 }
 
 dependencies {
+    compile('org.activiti:activiti-spring-boot-starter-basic:5.22.0')
+    compile('org.activiti:activiti-modeler:5.22.0')
+    compile('com.github.pagehelper:pagehelper-spring-boot-starter:1.1.1')
+    compile('commons-io:commons-io:2.5')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-devtools')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
     runtime('mysql:mysql-connector-java')

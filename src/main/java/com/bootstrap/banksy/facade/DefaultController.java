@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 @Controller
 public class DefaultController {
@@ -57,15 +58,5 @@ public class DefaultController {
             e.printStackTrace();
         }
         return modelAndView;
-    }
-
-    /**
-     * 公共服务类
-     * @param request
-     * @param <T>
-     * @return
-     */
-    public <T extends Request> Object baseService(T request) {
-        return null;
     }
 }
